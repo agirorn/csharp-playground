@@ -1,0 +1,139 @@
+# More rules can be found here
+# https://github.com/dotnet/runtime/blob/main/eng/CodeAnalysis.src.globalconfig
+# https://github.com/AVEVA/sample-adh-authentication_authorization-dotnet/blob/main/.editorconfig
+
+# Top-level EditorConfig file
+root = true
+
+[*.cs]
+max_line_length = 80
+
+##############
+# Formatting #
+##############
+
+dotnet_diagnostic.SA1503.severity = error
+
+# Require expression-bodied members where possible
+csharp_style_expression_bodied_methods = when_possible:warning
+csharp_style_expression_bodied_properties = when_possible:warning
+
+# Use 'var' only when the type is obvious
+csharp_style_var_elsewhere = false:error
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+
+# Use explicit type for clarity
+dotnet_style_qualification_for_field = true:error
+dotnet_style_qualification_for_property = true:error
+dotnet_style_qualification_for_method = true:error
+dotnet_style_qualification_for_event = true:error
+
+###############
+# Null Safety #
+###############
+
+# Enable nullable reference types
+nullable = enable
+
+# Disallow conditional null-forgiving operator usage (by policy — enforced via analyzer/CI, not compiler)
+# This is not enforced directly by .editorconfig — use grep or a custom analyzer.
+# You can add a comment here to clarify intent:
+# NOTE: Null-forgiving operator (!) is banned. Use explicit null-checks.
+
+#################
+# Code Clarity  #
+#################
+
+# Require explicit access modifiers
+dotnet_style_require_accessibility_modifiers = always:error
+
+# Enforce language keywords over BCL types (e.g., `int` not `Int32`)
+dotnet_style_predefined_type_for_locals_parameters_members = true:error
+dotnet_style_predefined_type_for_member_access = true:error
+
+# Require 'this.' for clarity
+dotnet_style_qualification_for_local_function = true:error
+
+#################
+# Naming Styles #
+#################
+
+# Use PascalCase for classes, methods, and properties
+dotnet_naming_rule.pascal_case_rule.severity = error
+dotnet_naming_rule.pascal_case_rule.symbols = all_members
+dotnet_naming_rule.pascal_case_rule.style = pascal_case_style
+
+dotnet_naming_symbols.all_members.applicable_kinds = property, method, class, struct, interface
+dotnet_naming_symbols.all_members.applicable_accessibilities = *
+dotnet_naming_symbols.all_members.required_modifiers = *
+
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+# Use camelCase for fields
+dotnet_naming_rule.camel_case_fields.severity = error
+dotnet_naming_rule.camel_case_fields.symbols = fields
+dotnet_naming_rule.camel_case_fields.style = camel_case_style
+
+dotnet_naming_symbols.fields.applicable_kinds = field
+dotnet_naming_symbols.fields.applicable_accessibilities = *
+dotnet_naming_symbols.fields.required_modifiers = *
+
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+
+#####################
+# File Layout Rules #
+#####################
+
+# Organize usings: place 'System.*' first, remove unused
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = true
+
+
+
+# XML comment analysis is disabled due to project configuration
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
+dotnet_diagnostic.SA0001.severity = silent
+
+# Single-line comment should be preceded by blank line
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1515.md
+dotnet_diagnostic.SA1515.severity = silent
+
+# A C# code element is missing a documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1600.md
+dotnet_diagnostic.SA1600.severity = none
+
+
+# A C# partial element is missing a documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1601.md
+dotnet_diagnostic.SA1601.severity = silent
+
+# An item within a C# enumeration is missing an Xml documentation header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1602.md
+dotnet_diagnostic.SA1602.severity = silent
+
+# Documentation text should not be empty
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1627.md
+dotnet_diagnostic.SA1627.severity = silent
+
+# Documentation text should end with a period
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1629.md
+dotnet_diagnostic.SA1629.severity = silent
+
+# A C# code file is missing a standard file header.
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1633.md
+dotnet_diagnostic.SA1633.severity = silent
+
+# XML comment analysis is disabled due to project configuration
+# https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0001.md
+dotnet_diagnostic.SA0001.severity = silent
+
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.CA1050.severity = none
+dotnet_diagnostic.SA1516.severity = none
+
+# SA1028: Code should not contain trailing whitespace
+dotnet_diagnostic.SA1028.severity = error
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA0001.severity = none
+
