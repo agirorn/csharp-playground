@@ -1,7 +1,6 @@
-using System.Threading.Tasks;
-using Hello.Model;
+namespace Acme.Hello.DAO;
 
 public interface IHelloDao
 {
-    Task<Hello?> GetHelloAsync();
+    Task<Model.Hello?> GetHelloAsync();
 }

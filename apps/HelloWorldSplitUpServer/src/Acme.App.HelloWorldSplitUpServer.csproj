@@ -24,4 +24,10 @@
     </PackageReference>
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Hello.Model\src\Acme.Hello.Model.csproj" />
+    <ProjectReference Include="..\..\..\core\Hello.DAO\src\Acme.Hello.DAO.csproj" />
+  </ItemGroup>
+
 </Project>

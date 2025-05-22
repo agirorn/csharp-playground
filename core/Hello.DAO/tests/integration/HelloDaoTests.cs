@@ -2,14 +2,14 @@ using System;
 using System.Data;
 using System.Threading.Tasks;
 
-using Hello.DAO;
-using Hello.Model;
+using Acme.Hello.DAO;
+using Acme.Hello.Model;
 
 using Npgsql;
 
 // using Xunit;
 
-namespace Hello.DAO.IntegrationTests;
+namespace Acme.Hello.DAO.IntegrationTests;
 
 public class HelloDaoTests
 {
@@ -24,7 +24,7 @@ public class HelloDaoTests
 
         var dao = new HelloDao(connection);
 
-        Hello? result = await dao.GetHelloAsync();
+        Acme.Hello.Model.Hello? result = await dao.GetHelloAsync();
 
         Assert.NotNull(result);
         Assert.False(string.IsNullOrWhiteSpace(result!.Content));

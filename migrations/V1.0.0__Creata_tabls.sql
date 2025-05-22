@@ -3,4 +3,4 @@
 CREATE TABLE hello (
     content TEXT
 );
-INSERT INTO hello (content) VALUES ('hello World');
+INSERT INTO hello (content) VALUES ('Hello World');

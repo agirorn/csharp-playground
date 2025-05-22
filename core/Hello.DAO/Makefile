@@ -19,11 +19,11 @@ dev-exec:
 
 .PHONY: test
 test:
-	make test-unit
+	make test-integration
 
-.PHONY: test-unit
-test-unit:
-	cd tests && dotnet test unit
+.PHONY: test-integration
+test-integration:
+	cd tests && dotnet test integration
 
 .PHONY: clean
 clean:

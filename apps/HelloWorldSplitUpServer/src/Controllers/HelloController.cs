@@ -1,8 +1,6 @@
-// using HelloWorldAllInOneWebServer.Data;
-// using HelloWorldAllInOneWebServer.Models;
-using Dapper;
-
+using Acme.Hello.DAO;
 using Microsoft.AspNetCore.Mvc;
+using HelloModel = Acme.Hello.Model.Hello;
 
 [ApiController]
 [Route("[controller]")]
@@ -14,9 +12,8 @@ public class HelloController(DapperContext context) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetHello()
     {
-        var query = "SELECT content FROM hello LIMIT 1";
-        using System.Data.IDbConnection connection = this.context.CreateConnection();
-        Hello? result = await connection.QueryFirstOrDefaultAsync<Hello>(query);
-        return result == null ? this.NotFound() : this.Ok(result);
+        IHelloDao dao = new HelloDao(this.context.CreateConnection());
+        HelloModel? res = await dao.GetHelloAsync();
+        return res == null ? this.NotFound() : this.Ok(res);
     }
 }

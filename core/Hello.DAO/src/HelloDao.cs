@@ -1,21 +1,16 @@
 using Dapper;
 
-using Hello.Model;
-
 using System.Data;
 
-public class HelloDao : IHelloDao
+namespace Acme.Hello.DAO;
+
+public class HelloDao(IDbConnection connection) : IHelloDao
 {
-    private readonly IDbConnection connection;
+    private readonly IDbConnection connection = connection;
 
-    public HelloDao(IDbConnection connection)
-    {
-        this.connection = connection;
-    }
-
-    public async Task<Hello?> GetHelloAsync()
+    public async Task<Model.Hello?> GetHelloAsync()
     {
         const string query = "SELECT content FROM hello LIMIT 1";
-        return await connection.QueryFirstOrDefaultAsync<Hello>(query);
+        return await this.connection.QueryFirstOrDefaultAsync<Model.Hello>(query);
     }
 }
