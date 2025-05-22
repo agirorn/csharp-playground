@@ -6,7 +6,7 @@ PSQL=PGPASSWORD=$(DB_PASS) psql -U $(DB_USER) -d $(DB_NAME) -h $(DB_HOST)
 
 .PHONY: start
 start:
-	dotnet run
+	dotnet start
 
 .PHONY: migrate
 migrate:

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <RootNamespace>Acme.Hello.Model</RootNamespace>
+    <!-- <RootNamespace>P.Hello.Model</RootNamespace> -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      - Compile Remove
+      - is required for nestign the test under the Module under test
+      -->
+    <Compile Remove="tests/**/*.cs" />
+    <!--
+      - None Remove
+      - is required for nestign the test under the Module under test
+      -->
+    <None Remove="tests/**/*" />
+    <!--
+      - EmbeddedResource Remove
+      - is required for nestign the test under the Module under test
+      -->
+    <EmbeddedResource Remove="tests/**/*" />
+  </ItemGroup>
+
+</Project>

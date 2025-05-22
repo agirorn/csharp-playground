@@ -1,12 +1,17 @@
 # C# playgrond
 
 ## Folder Structure
+core/Hello.DAO/HelloDao.cs
+
+core/Hello.DAO/tests/integration/
+
+core/Hello.Model/tests/unit/
+
 
 /MySolution
 ├── MySolution.sln
 ├── apps/
 │   ├── ServerX/
-│   │   ├── src
 │   │   ├── ServerX.csproj
 │   │   └── tests/
 │   │       └── ServerX.Tests.csproj
@@ -17,7 +22,6 @@
 │           └── ServerY.Tests.csproj
 ├── workers/
 │   ├── WorkerX/
-│   │   ├── src
 │   │   ├── WorkerX.csproj
 │   │   └── tests/
 │   │       └── WorkerX.Tests.csproj
@@ -27,6 +31,18 @@
 │       └── tests/
 │           └── WorkerY.Tests.csproj
 ├── core/
+│   ├── Hello.DAO/
+│   │   ├── tests/
+│   │   │   └── integration/
+│   │   │       └── Hello.DAO.IntegrationTests.csproj
+│   │   └── Hello.DAO.csproj
+│   │
+│   ├── Hello.Model/
+│   │   ├── tests/
+│   │   │   └── unit/
+│   │   │       └── Hello.Model.UnitTests.csproj
+│   │   └── Hello.Model.csproj
+│   │
 │   └── Cart/
 │       ├── Cart.Domain/
 │       │   ├── src
