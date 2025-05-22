@@ -4,8 +4,6 @@ using Hello.Model;
 
 using System.Data;
 
-namespace Hello.DAO;
-
 public class HelloDao : IHelloDao
 {
     private readonly IDbConnection connection;

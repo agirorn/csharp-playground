@@ -59,3 +59,50 @@ core/Hello.Model/tests/unit/
 │       │       │   └── Cart.Model.UnitTests.csproj
 │       │       └── integration/
 │       │           └── Cart.Model.IntegrationTests.csproj
+
+
+# C# playgrond
+
+## Folder Structure
+
+/MySolution
+├── Acme.sln
+├── apps/
+│   ├── App.X/
+│   │   ├── src
+│   │   ├── Acme.ServerX.csproj
+│   │   └── tests/
+│   │       └── Acme.ServerX.Tests.csproj
+│   └── App.Y/
+│       ├── src
+│       ├── ServerY.csproj
+│       └── tests/
+│           └── ServerY.Tests.csproj
+├── workers/
+│   ├── Worker.X/
+│   │   ├── src
+│   │   ├── Acme.WorkerX.csproj
+│   │   └── tests/
+│   │       └── Acme.WorkerX.Tests.csproj
+│   └── Worker.Y/
+│       ├── src
+│       ├── Acme.WorkerY.csproj
+│       └── tests/
+│           └── Acme.WorkerY.Tests.csproj
+├── core/
+│   └── Cart/
+│       ├── Cart.Domain/
+│       │   ├── src
+│       │   │   └── Acme.Cart.Domain.csproj
+│       │   └── tests/
+│       │       ├── unit/
+│       │       │   └── Acme.Cart.Domain.UnitTests.csproj
+│       │       └── integration/
+│       │           └── Acme.Cart.Domain.IntegrationTests.csproj
+│       ├── Cart.Model/
+│       │   ├── Acme.Cart.Model.csproj
+│       │   └── tests/
+│       │       ├── unit/
+│       │       │   └── Acme.Cart.Model.UnitTests.csproj
+│       │       └── integration/
+│       │           └── Acme.Cart.Model.IntegrationTests.csproj
