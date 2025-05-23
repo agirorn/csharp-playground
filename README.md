@@ -1,5 +1,8 @@
 # C# playgrond
 
+LOL
+https://blog.jetbrains.com/dotnet/2022/05/11/structure-and-organize-net-projects-with-rider/
+
 ## Setup
 
 ```
@@ -198,3 +201,50 @@ class HelloTransactionalLogic : TransactionBase, IHelloLogic
     }
 }
 ```
+
+
+## NOTES
+We should be using https://github.com/DotNetAnalyzers/IDisposableAnalyzers
+
+Add this to this to every project
+```shell
+dotnet add package IDisposableAnalyzers
+```
+
+or maybe it can be added to the Directory.Build.props
+
+```xml
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>true</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IDisposableAnalyzers" Version="4.0.0" PrivateAssets="all" />
+  </ItemGroup>
+</Project>
+```
+
+```
+dotnet_diagnostic.IDISP001.severity = error
+dotnet_style_qualification_for_field = true:suggestion
+csharp_style_var_elsewhere = false:warning
+```
+
+### 6. Enable Nullable Reference Types and Warnings As Errors
+
+You'll write better code and catch issues early.
+
+```xml
+<Nullable>enable</Nullable>
+<WarningsAsErrors>true</WarningsAsErrors>
+```
+
+https://www.nuget.org/packages/Dapper.Advisor/1.0.2
+https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/
+https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files
+
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-9.0&utm_source=chatgpt.com
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-9.0&utm_source=chatgpt.com
