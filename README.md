@@ -248,3 +248,10 @@ https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuratio
 
 https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-9.0&utm_source=chatgpt.com
 https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-9.0&utm_source=chatgpt.com
+
+https://blog.jetbrains.com/dotnet/2022/05/11/structure-and-organize-net-projects-with-rider/
+https://medium.com/codenx/centralize-net-project-settings-using-directory-build-props-and-directory-package-props-d6b4a471c018
+https://medium.com/codenx/centralize-net-project-settings-using-directory-build-props-and-directory-package-props-d6b4a471c018
+
+## Videos
+https://www.youtube.com/watch?v=QRgtcbxJlo0
