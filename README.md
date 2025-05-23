@@ -106,3 +106,68 @@ core/Hello.Model/tests/unit/
 │       │       │   └── Acme.Cart.Model.UnitTests.csproj
 │       │       └── integration/
 │       │           └── Acme.Cart.Model.IntegrationTests.csproj
+
+
+
+using System.Transactions;
+using Acme.Hello.DAO;
+using Microsoft.AspNetCore.Mvc;
+using HelloModel = Acme.Hello.Model.Hello;
+
+[ApiController]
+[Route("[controller]")]
+public class HelloController(DapperContext context) : ControllerBase
+{
+    private readonly DapperContext context = context ?? throw new InvalidOperationException(
+              "Missing context.");
+
+    [HttpGet]
+    public async Task<IActionResult> GetHello()
+    {
+        return this.Ok(await transaction(async (con) =>
+        {
+            IHelloDao dao = new HelloDao(con);
+            var logic = new HelloLogic(dao);
+
+            HelloModel? res = await logic.GetHelloAsync();
+            return res;
+        }));
+    }
+}
+
+public class HelloController(IHelloLogic logic) : ControllerBase
+[HttpGet]
+public async Task<IActionResult> GetHello()
+{
+    HelloModel? res = await logic.GetHelloAsync();
+    return res == null ? this.NotFound() : this.Ok(res);
+}
+}
+
+
+public class HelloController(IHelloLogic logic) : ControllerBase
+[HttpGet]
+public async Task<IActionResult> GetHello()
+{
+    return this.Ok(await logic.GetHelloAsync());
+}
+}
+
+public class HelloLogic(IHelloDao dao)  : IHelloLogic
+{
+    public async Task<Acme.Hello.Model.Hello?> GetHelloAsync()
+    {
+        return await dao.GetHelloAsync(); // Use directly
+    }
+}
+
+class HelloTransactionalLogic : TransactionBase, IHelloLogic
+{
+    public async Task<Acme.Hello.Model.Hello?> GetHelloAsync()
+    {
+        return await this.Transaction(async (con) =>
+        {
+            return await new HelloLogic(new HelloDao(con)).GetHelloAsync();
+        });
+    }
+}
