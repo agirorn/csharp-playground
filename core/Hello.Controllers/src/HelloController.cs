@@ -13,7 +13,9 @@ public class HelloController(DapperContext context) : ControllerBase
     public async Task<IActionResult> GetHello()
     {
         IHelloDao dao = new HelloDao(this.context.CreateConnection());
-        HelloModel? res = await dao.GetHelloAsync();
+        var logic = new HelloLogic(dao);
+
+        HelloModel? res = await logic.GetHelloAsync();
         return res == null ? this.NotFound() : this.Ok(res);
     }
 }
