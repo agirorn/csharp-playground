@@ -10,3 +10,19 @@ PSQL_TEST=PGPASSWORD=$(DB_PASS) psql -U $(DB_USER) -d $(DB_NAME_TEST) -h $(DB_HO
 migrate:
 	$(PSQL) -f migrations/V1.0.0__Creata_tabls.sql
 	$(PSQL_TEST) -f migrations/V1.0.0__Creata_tabls.sql
+
+.PHONY: start-pg
+start-pg:
+	cd dev-tools/pg && make start
+
+.PHONY: clean-pg
+clean-pg:
+	cd dev-tools/pg && make clean
+
+.PHONY: setup
+setup:
+	cd dev-tools/pg && make setup
+
+.PHONY: test
+test:
+	dotnet test

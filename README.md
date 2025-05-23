@@ -1,5 +1,30 @@
 # C# playgrond
 
+## Setup
+
+```
+make setup
+```
+
+## Start PostgreSQL
+
+```
+make start-pg
+```
+
+## Clean PostgreSQL
+
+```
+make clean-pg
+```
+
+## test
+
+```
+make test
+```
+
+
 ## Folder Structure
 core/Hello.DAO/HelloDao.cs
 

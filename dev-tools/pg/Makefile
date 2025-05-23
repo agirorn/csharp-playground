@@ -5,3 +5,7 @@ start:
 .PHONY: clean
 clean:
 	yarn pge clean
+
+.PHONY: setup
+setup:
+	yarn install
