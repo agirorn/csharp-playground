@@ -92,7 +92,7 @@ core/Hello.Model/tests/unit/
 ├── core/
 │   └── Cart/
 │       ├── Cart.Domain/
-│       │   ├── src
+    │       │   ├── src
 │       │   │   └── Acme.Cart.Domain.csproj
 │       │   └── tests/
 │       │       ├── unit/
@@ -108,7 +108,8 @@ core/Hello.Model/tests/unit/
 │       │           └── Acme.Cart.Model.IntegrationTests.csproj
 
 
-
+**Next itteration**
+```cs
 using System.Transactions;
 using Acme.Hello.DAO;
 using Microsoft.AspNetCore.Mvc;
@@ -171,3 +172,4 @@ class HelloTransactionalLogic : TransactionBase, IHelloLogic
         });
     }
 }
+```
