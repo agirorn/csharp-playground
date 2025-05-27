@@ -13,4 +13,11 @@ public class HelloDao(IDbConnection connection) : IHelloDao
         const string query = "SELECT content FROM hello LIMIT 1";
         return await this.connection.QueryFirstOrDefaultAsync<Model.Hello>(query);
     }
+
+    public async Task CreateHelloAsync(string content)
+    {
+        const string query = "INSERT INTO hello (content) VALUES (@content)";
+        await this.connection.ExecuteAsync(query, new {
+            content });
+    }
 }

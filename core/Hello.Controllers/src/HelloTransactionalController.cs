@@ -1,22 +1,22 @@
-using Acme.Hello.DAO;
 using Acme.Hello.Logic;
+using Acme.Hello.TransactionalLogic;
 using Microsoft.AspNetCore.Mvc;
 using HelloModel = Acme.Hello.Model.Hello;
 
+namespace Acme.Hello.Controllers;
+
 [ApiController]
 [Route("[controller]")]
-public class HelloController(DapperContext context) : ControllerBase
+public class HelloTransactionalController(DapperContext context) : ControllerBase
 {
     private readonly DapperContext context = context ?? throw new InvalidOperationException(
-              "Missing context.");
+        "Missing context.");
 
     [HttpGet]
     public async Task<IActionResult> GetHello()
     {
-        IHelloDao dao = new HelloDao(context.CreateConnection());
-        var logic = new HelloLogic(dao);
-
+        IHelloLogic logic = new HelloTransactionalLogic(this.context);
         HelloModel? res = await logic.GetHelloAsync();
-        return res == null ? NotFound() : Ok(res);
+        return res == null ? this.NotFound() : this.Ok(res);
     }
 }

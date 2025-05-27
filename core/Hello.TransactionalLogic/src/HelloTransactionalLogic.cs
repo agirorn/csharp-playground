@@ -1,19 +1,19 @@
-using System;
 using System.Data;
-using System.Data.Common;
-using System.Threading.Tasks;
 using Acme.Hello.DAO;
+using Acme.Hello.Logic;
 using Dapper;
 using HelloModel = Acme.Hello.Model.Hello;
 
-public class HelloTransactionalLogic(DapperContext context)
+namespace Acme.Hello.TransactionalLogic;
+
+public class HelloTransactionalLogic(DapperContext context) : IHelloLogic
 {
     private readonly DapperContext context = context
-      ?? throw new InvalidOperationException("Missing context.");
+        ?? throw new InvalidOperationException("Missing context.");
 
-    public async Task<Acme.Hello.Model.Hello?> GetHelloAsync()
+    public async Task<HelloModel?> GetHelloAsync()
     {
-        using IDbConnection connection = this.context.CreateConnection();
+        using IDbConnection connection = context.CreateConnection();
         {
             IHelloDao dao = new HelloDao(connection);
             var logic = new HelloLogic(dao);
@@ -21,6 +21,18 @@ public class HelloTransactionalLogic(DapperContext context)
             HelloModel? res = await logic.GetHelloAsync();
             return res;
         }
+    }
+
+    public async Task CreateHello()
+    {
+        await this.Transaction<Task>(async (connection) =>
+        {
+            IHelloDao dao = new HelloDao(connection);
+            var logic = new HelloLogic(dao);
+
+            await logic.CreateHello();
+            return null;
+        });
     }
 
     public async Task<T> Transaction<T>(Func<IDbConnection, Task<T>> func)
