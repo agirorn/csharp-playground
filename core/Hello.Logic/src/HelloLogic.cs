@@ -1,6 +1,6 @@
 using Acme.Hello.DAO;
 
-public class HelloLogic(IHelloDao dao)
+public class HelloLogic(IHelloDao dao) : IHelloLogic
 {
     public async Task<Acme.Hello.Model.Hello?> GetHelloAsync()
     {

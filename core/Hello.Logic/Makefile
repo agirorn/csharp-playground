@@ -14,8 +14,15 @@ dev-exec:
 	# clear
 	line-cli
 	make clean
+	make build
 	make test
-	line-cli
+	# line-cli
+
+
+.PHONY: build
+build:
+	dotnet build src
+
 
 .PHONY: test
 test:
