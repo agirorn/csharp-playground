@@ -1,11 +1,26 @@
 {
   "RoslynExtensionsOptions": {
     "enableAnalyzersSupport": true,
+    "enableImportCompletion": true,
     "locationPaths": [
       "./packages"
     ]
   },
   "FormattingOptions": {
-    "EnableEditorConfigSupport": true
+    "EnableEditorConfigSupport": true,
+    // "UseTabs": false,
+    // "TabSize": 4,
+    // "IndentationSize": 4,
+    // "NewLinesForBracesInMethods": true,
+    // "SpaceAfterMethodDeclarationName": false,
+    // "SpaceWithinMethodDeclarationParenthesis": false,
+    // "SpaceAfterControlFlowStatementKeyword": true,
+    // "OrganizeImports": true
+  },
+  "FileOptions": {
+    "SystemExcludeSearchPatterns": [
+      "**/bin/**",
+      "**/obj/**"
+    ]
   }
 }

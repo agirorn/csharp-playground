@@ -28,6 +28,6 @@ public class HelloDaoTests
 
         Assert.NotNull(result);
         Assert.False(string.IsNullOrWhiteSpace(result!.Content));
-        Assert.Equal("Hello World", result.Content); // adjust to expected DB value
+        Assert.Equal("Hello World", result.Content);
     }
 }
