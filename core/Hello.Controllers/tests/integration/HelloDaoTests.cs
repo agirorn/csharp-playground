@@ -1,15 +1,7 @@
-using System;
-using System.Data;
-using System.Threading.Tasks;
-
 using Acme.Hello.DAO;
-using Acme.Hello.Model;
-
 using Npgsql;
 
-// using Xunit;
-
-namespace Acme.Hello.DAO.IntegrationTests;
+namespace Acme.Hello.Controllers.IntegrationTests;
 
 public class HelloDaoTests
 {

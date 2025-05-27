@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Hello.DAO\src\Acme.Hello.DAO.csproj" />
     <ProjectReference Include="..\..\src\Acme.Hello.TrransactionalLogic.csproj" />
   </ItemGroup>
 
