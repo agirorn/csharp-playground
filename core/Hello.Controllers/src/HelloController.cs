@@ -1,5 +1,6 @@
 using Acme.Hello.DAO;
 using Acme.Hello.Logic;
+using Acme.Hello.TransactionalLogic;
 using Microsoft.AspNetCore.Mvc;
 using HelloModel = Acme.Hello.Model.Hello;
 
@@ -18,5 +19,14 @@ public class HelloController(DapperContext context) : ControllerBase
 
         HelloModel? res = await logic.GetHelloAsync();
         return res == null ? NotFound() : Ok(res);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> PostHello()
+    {
+        var logic = new HelloTransactionalLogic(context);
+        await logic.CreateHello();
+
+        return Ok();
     }
 }

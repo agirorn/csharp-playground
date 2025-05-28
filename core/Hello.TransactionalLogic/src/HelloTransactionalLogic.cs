@@ -30,24 +30,27 @@ public class HelloTransactionalLogic(DapperContext context) : IHelloLogic
             IHelloDao dao = new HelloDao(connection);
             var logic = new HelloLogic(dao);
 
+            // await logic.CreateHelloFail();
             await logic.CreateHello();
             return null;
         });
     }
 
-    public async Task<T> Transaction<T>(Func<IDbConnection, Task<T>> func)
+    private async Task<T> Transaction<T>(Func<IDbConnection, Task<T>> func)
     {
         using IDbConnection connection = this.context.CreateConnection();
-        _ = await connection.ExecuteAsync("BEGIN;");
+        connection.Open();
+        using IDbTransaction transaction = connection.BeginTransaction();
+
         try
         {
             T result = await func(connection);
-            _ = await connection.ExecuteAsync("COMMIT;");
+            transaction.Commit();
             return result;
         }
         catch
         {
-            _ = await connection.ExecuteAsync("ROLLBACK;");
+            transaction.Rollback();
             throw;
         }
     }
