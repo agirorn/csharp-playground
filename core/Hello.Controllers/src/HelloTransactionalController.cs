@@ -1,5 +1,4 @@
 using Acme.Hello.Logic;
-using Acme.Hello.TransactionalLogic;
 using Microsoft.AspNetCore.Mvc;
 using HelloModel = Acme.Hello.Model.Hello;
 

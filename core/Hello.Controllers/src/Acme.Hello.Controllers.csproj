@@ -25,7 +25,6 @@
     <ProjectReference Include="..\..\Hello.Model\src\Acme.Hello.Model.csproj" />
     <ProjectReference Include="..\..\Hello.Data\src\Acme.Hello.Data.csproj" />
     <ProjectReference Include="..\..\Hello.Logic\src\Acme.Hello.Logic.csproj" />
-    <ProjectReference Include="..\..\Hello.TransactionalLogic\src\Acme.Hello.TransactionalLogic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

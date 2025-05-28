@@ -1,10 +1,8 @@
 using System.Data;
 using Acme.Hello.DAO;
-using Acme.Hello.Logic;
-using Dapper;
 using HelloModel = Acme.Hello.Model.Hello;
 
-namespace Acme.Hello.TransactionalLogic;
+namespace Acme.Hello.Logic;
 
 public class HelloTransactionalLogic(DapperContext context) : IHelloLogic
 {
